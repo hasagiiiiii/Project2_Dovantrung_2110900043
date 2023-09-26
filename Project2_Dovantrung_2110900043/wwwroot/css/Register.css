@@ -1,0 +1,91 @@
+﻿.wrapper {
+    margin: 0 auto;
+    width: 60%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    /* row-gap: 10px; */
+    flex-wrap: wrap;
+    /* background: linear-gradient(145deg, #adb0ae, #cdd2cf); */
+}
+
+.left-content {
+    flex: 1 0 300px;
+    display: flex;
+    margin-top: 140px;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #9e9e9eb1;
+    box-shadow: 4px 4px 7px #4d4e4d, -4px -4px 7px #ffffff;
+    height: 600px;
+}
+
+    .left-content .form-input {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .left-content .form-input {
+        width: 290px;
+    }
+
+        .left-content .form-input input {
+            margin: 30px 0px;
+            border-radius: 50px;
+            border: none;
+            height: 40px;
+            background: #b3adad;
+            box-shadow: inset 9px 9px 18px #7d7d7d, inset -9px -9px 18px #d0d0d0;
+            padding: 0px 5px;
+        }
+
+            .left-content .form-input input:focus {
+                outline: none;
+            }
+
+    .left-content button {
+        margin-top: 20px;
+        width: 100%;
+        height: 40px;
+        border: none;
+        padding: 10px;
+        border-radius: 68px;
+        background: #a6a6a6;
+        box-shadow: 8px 8px 16px #7d7d7d, -8px -8px 16px #d0d0d0;
+        font-size: 18px;
+        text-align: center;
+    }
+
+        .left-content button:active {
+            box-shadow: inset 28px 28px 99px #9e9f9e, inset -28px -28px 99px #ffffff;
+        }
+
+    .left-content .sign-email {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+        .left-content .sign-email div svg {
+            font-size: 30px;
+        }
+
+        .left-content .sign-email .facebook {
+            color: blue;
+        }
+
+.right-content {
+    flex: 1 0 300px;
+    margin-top: 140px;
+    height: 600px;
+    background: url(../image/88-min.jpg);
+    background-position-x: -200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+}

@@ -1,0 +1,163 @@
+﻿@{
+    Layout = "~/Views/Shared/NoHeader.cshtml";
+}
+@model ParentModel
+}
+<link href="~/css/profile.css" rel="stylesheet"  />
+<script src="https://kit.fontawesome.com/fc74be768b.js"
+        crossorigin="anonymous"></script>
+    <header>
+        <div class="pen">
+            <i class="fa-solid fa-pen"></i>
+        </div>
+        <div class="banner-background">
+            <img src="../image/j.jpg" alt="" />
+        </div>  
+        <div class="user">
+            <div class="avatar_user">
+                <img src="~/@Model.Users[0].img_user" alt="" class="user-img" />
+                <div class="upload-img">
+                    <button class="btnUpload">
+                        <i class="fa-solid fa-camera"></i>
+                        Upload
+                    </button>
+                </div>
+            </div>
+            <div class="user-content">
+                <h1 class="user-name">@Model.Users[0].username</h1>
+                <p>đã tham gia ngày : 15/9/2003</p>
+            </div>
+        </div>
+    </header>
+    <div class="path">
+        <h2><a href="#">Home / </a></h2>
+        <h3><a href="#">Profile</a></h3>
+    </div>
+    <div class="inline"></div>
+    <!-- dashboard -->
+    <h1>My Cart</h1>
+    <div class="dashboard-content">
+        <div class="dashboard-card">
+            <img src="../image/g-min.jpg" alt="" class="card-image" />
+            <div class="card-detail">
+                <h4>Amzing Bread <span>$30</span></h4>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <p class="card-time"><span class="fas fa-clock"></span>15-30 mins</p>
+                <div class="card-action">
+                    <a class="desc" href="../html/detail.html">Read More</a>
+                    <a class="add-card" href="#">
+                        <span class="fa-solid fa-cart-shopping"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-card">
+            <img src="../image/-min.jpg" alt="" class="card-image" />
+            <div class="card-detail">
+                <h4>Amzing Bread <span>$30</span></h4>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <p class="card-time"><span class="fas fa-clock"></span>15-30 mins</p>
+                <div class="card-action">
+                    <a class="desc" href="../html/detail.html">Read More</a>
+                    <a class="add-card" href="#">
+                        <span class="fa-solid fa-cart-shopping"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-card">
+            <img src="../image/-min1.jpg" alt="" class="card-image" />
+            <div class="card-detail">
+                <h4>Amzing Bread <span>$30</span></h4>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <p class="card-time"><span class="fas fa-clock"></span>15-30 mins</p>
+                <div class="card-action">
+                    <a class="desc" href="../html/detail.html">Read More</a>
+                    <a class="add-card" href="#">
+                        <span class="fa-solid fa-cart-shopping"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-card">
+            <img src="../image/trrt.jpg" alt="" class="card-image" />
+            <div class="card-detail">
+                <h4>Amzing Bread <span>$30</span></h4>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <p class="card-time"><span class="fas fa-clock"></span>15-30 mins</p>
+                <div class="card-action">
+                    <a class="desc" href="../html/detail.html">Read More</a>
+                    <a class="add-card" href="#">
+                        <span class="fa-solid fa-cart-shopping"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-card">
+            <img src="../image/88-min.jpg" alt="" class="card-image" />
+            <div class="card-detail">
+                <h4>Amzing Bread <span>$30</span></h4>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <p class="card-time"><span class="fas fa-clock"></span>15-30 mins</p>
+                <div class="card-action">
+                    <a class="desc" href="../html/detail.html">Read More</a>
+                    <a class="add-card" href="#">
+                        <span class="fa-solid fa-cart-shopping"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-card">
+            <img src="../image/nn-min.jpg" alt="" class="card-image" />
+            <div class="card-detail">
+                <h4>Amzing Bread <span>$30</span></h4>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <p class="card-time"><span class="fas fa-clock"></span>15-30 mins</p>
+                <div class="card-action">
+                    <a class="desc" href="../html/detail.html">Read More</a>
+                    <a class="add-card" href="#">
+                        <span class="fa-solid fa-cart-shopping"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Form change -->
+    <div class="form_changeUser">
+        <div class="overlay"></div>
+    <form action="/Home/UpdateProfile" method="post" enctype="multipart/form-data">
+            <div class="form_input-text">
+            <label for="Url_img">Upload Img </label>
+            <input type="file" name="Url_img" />
+            </div>
+        <div style="display:none" class="form_input-text">
+            <label for="username">username</label>
+            <input type="text"
+                   placeholder="Your id_user"
+                   name="id_user"
+                   value=@Model.Users[0].id_user
+                   readonly
+                   />
+        </div>
+            <div class="form_input-text">
+                <label for="username">username</label>
+                <input type="text"
+                       placeholder="Your Username"
+                       name="username"
+                       value="" />
+            </div>
+            <div class="form_input-text">
+                <label for="email">Email</label>
+                <input type="email"
+                       placeholder="Your Email"
+                       name="email"
+                       id="" />
+            </div>
+            <div class="form_input-text">
+                <label for="bio">Bio</label>
+                <textarea name="bio" id="" cols="80" rows="15"></textarea>
+            </div>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+<script src="~/js/user.js"></script>

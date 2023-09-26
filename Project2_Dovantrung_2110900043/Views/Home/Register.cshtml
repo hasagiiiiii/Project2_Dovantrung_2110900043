@@ -1,0 +1,39 @@
+﻿<link href="~/css/register.css" rel="stylesheet" />
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<script src="https://kit.fontawesome.com/fc74be768b.js"
+        crossorigin="anonymous"></script>
+    <div class="wrapper">
+        <div class="left-content">
+            <h1>Sign - up</h1>
+            <form action="/Home/setRegister" method="post">
+                <div class="form-input">
+                    <input type="text" name="username" placeholder="username" />
+                    <input type="text" name="passsword" placeholder="password" />
+                    <input type="text"
+                           name="confirm-password"
+                           placeholder="confirm password" />
+                    <input type="email" name="email" placeholder="Email" />
+                </div>
+                <button>Register</button>
+                <p>or sign in with</p>
+                <div class="sign-email">
+                    <div class="facebook">
+                        <i class="fa-brands fa-square-facebook"></i>
+                    </div>
+                    <div class="google">
+                        <img src="https://www.google.com/images/hpp/ic_wahlberg_product_core_48.png8.png"
+                             alt="" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="right-content">
+            <h1>Wellcome Back!</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Exercitationem eligendi beatae, nesciunt dolorum nulla eaque expedita
+                porro aperiam soluta ad!
+            </p>
+        </div>
+    </div>

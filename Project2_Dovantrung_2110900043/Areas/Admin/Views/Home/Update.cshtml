@@ -1,0 +1,115 @@
+﻿
+
+<style>
+
+
+    .form-update {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        /* background-color: rgba(128, 128, 128, 0.46); */
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        
+
+    .form-update h1 {
+        margin: 0;
+        background: black;
+        width: 100%;
+    }
+
+    .form-update .overlay {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(128, 128, 128, 0.76);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    .form-update form {
+        position: fixed;
+        width: 50%;
+        height: max-content;
+        text-align: start;
+        z-index: 999;
+        border: 1px solid black;
+        top: 30px;
+        left: 400px;
+        background-color: #e0d6d6;
+        color: white;
+    }
+
+        .form-update form .form-input {
+            display: flex;
+            margin: 10px 20px 20px 10px;
+        }
+
+            .form-update form .form-input input {
+                width: 60%;
+                height: 30px;
+                border-radius: 15px;
+                border: 1px solid rgba(128, 128, 128, 0.786);
+            }
+
+                .form-update form .form-input input:focus {
+                    outline: none;
+                }
+
+            .form-update form .form-input select {
+                width: 20%;
+            }
+
+        .form-update form label {
+            width: 20%;
+            text-align: start;
+        }
+
+    .form-update button {
+        width: 150px;
+        height: 40px;
+        transform:translateX(205%);
+        border-radius: 10px;
+        background-color: green ;
+        border: none;
+    }
+</style>
+<div class='form-update'>
+    <div class="overlay"></div>
+    <form action="/Admin/Home/update" method="post">
+        <h1>Task</h1>
+        <div class="form-input">
+            <label for="username">Name</label>
+            <input type="text" name='username' placeholder='UserName ...' />
+        </div>
+        <div class="form-input">
+            <label for="passsword">Password</label>
+            <input type="text" name='passsword' placeholder='Password...' />
+        </div>
+        <div class="form-input">
+            <label for="email">Price</label>
+            <input type="email" name='email' placeholder='Email ...' />
+        </div>
+        <div class="form-input">
+            <label for="bio">Price</label>
+            <textarea name="bio" id="" cols="80" rows="15"></textarea>
+        </div>
+        <div class="form-input">
+            <label for="is_admin">Is_admin</label>
+            <input type="checkbox" value="true" name='is_admin' />
+        </div>
+
+        <button>Update</button>
+
+    </form>
+</div>
+
+
+
