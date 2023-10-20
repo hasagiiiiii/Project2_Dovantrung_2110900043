@@ -1,5 +1,6 @@
-﻿
+﻿@using Project2_Dovantrung_2110900043.Models;
 
+@model List<UserModel> 
 <style>
 
 
@@ -81,35 +82,40 @@
         border: none;
     }
 </style>
-<div class='form-update'>
-    <div class="overlay"></div>
-    <form action="/Admin/Home/update" method="post">
-        <h1>Task</h1>
-        <div class="form-input">
-            <label for="username">Name</label>
-            <input type="text" name='username' placeholder='UserName ...' />
-        </div>
-        <div class="form-input">
-            <label for="passsword">Password</label>
-            <input type="text" name='passsword' placeholder='Password...' />
-        </div>
-        <div class="form-input">
-            <label for="email">Price</label>
-            <input type="email" name='email' placeholder='Email ...' />
-        </div>
-        <div class="form-input">
-            <label for="bio">Price</label>
-            <textarea name="bio" id="" cols="80" rows="15"></textarea>
-        </div>
-        <div class="form-input">
-            <label for="is_admin">Is_admin</label>
-            <input type="checkbox" value="true" name='is_admin' />
-        </div>
 
-        <button>Update</button>
+@foreach(var u in Model)
+{
 
-    </form>
-</div>
+    <div class='form-update'>
+        <div class="overlay"></div>
+        <form action="/Admin/Home/Edit" method="post">
+            <h1>Update</h1>
+            <div style="display:none;" class="form-input">
+                <label for="id_user">id</label>
+                <input type="text" name='id_user' value="@u.id_user" placeholder='id_user...' />
+            </div>
+            <div class="form-input">
+                <label for="username">Name</label>
+                <input type="text" name='username' value="@u.username" placeholder='UserName ...' />
+            </div>
+            <div class="form-input">
+                <label for="passsword">Password</label>
+                <input type="text" name='passsword' placeholder='Password...' />
+            </div>
+            <div class="form-input">
+                <label for="email">Price</label>
+                <input type="email" name='email' value="@u.email" placeholder='Email ...' />
+            </div>
+            <div class="form-input">
+                <label for="is_admin">Is_admin</label>
+                <input type="checkbox" value="true" name='is_admin' />
+            </div>
+
+            <button>Update</button>
+
+        </form>
+    </div>
+}
 
 
 

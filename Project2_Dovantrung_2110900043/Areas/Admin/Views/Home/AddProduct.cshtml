@@ -1,0 +1,139 @@
+﻿@{
+    Layout = "_NoHeader";
+}
+
+
+
+<style>
+
+
+    .form-update {
+        width: 100%;
+        height: max-content;
+        background-color: rgba(128, 128, 128, 0.46); 
+        
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+
+        .form-update h1 {
+            margin: 0;
+            background: black;
+            width: 100%;
+        }
+
+        .form-update .overlay {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(128, 128, 128, 0.76);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .form-update form {
+            position: fixed;
+            width: 50%;
+            height: max-content;
+            text-align: start;
+            z-index: 999;
+            border: 1px solid black;
+            top: 30px;
+            left: 400px;
+            background-color: #e0d6d6;
+            color: white;
+        }
+
+            .form-update form .form-input {
+                display: flex;
+                margin: 10px 20px 20px 10px;
+            }
+
+                .form-update form .form-input input {
+                    width: 60%;
+                    height: 30px;
+                    border-radius: 15px;
+                    border: 1px solid rgba(128, 128, 128, 0.786);
+                }
+
+                    .form-update form .form-input input:focus {
+                        outline: none;
+                    }
+
+                .form-update form .form-input select {
+                    width: 20%;
+                }
+
+            .form-update form label {
+                width: 20%;
+                text-align: start;
+                color:black;
+            }
+        .form-update .form-check-input{
+            width:20px;
+            height:20px;
+            background-color:gray;
+            color:black;
+        }
+        .form-update button {
+            width: 150px;
+            height: 40px;
+            transform: translateX(205%);
+            border-radius: 10px;
+            border: none;
+        }
+        
+</style>
+
+
+
+<div class='form-update'>
+    <div class="overlay"></div>
+    <form action="/Admin/Home/setProduct" enctype="multipart/form-data" method="post">
+        <h1>AddProduct</h1>
+        <div class="form-input">
+            <label for="name_product">Name_product</label>
+            <input type="text" class="form-control" name="name_product" id="name_product" placeholder="Enter nameProduc">
+        </div>
+        <div class="form-input">
+            <label for="URLimg">Img</label>
+            <input type="file" name="URLimg" class="form-control" id="URLimg">
+        </div>
+        <div class="form-input">
+            <label for="price">Price</label>
+            <input type="text" name="price" class="form-control" id="Price" placeholder="Enter Price">
+        </div>
+        <div class="form-input">
+            <label for="description">Description</label>
+            <textarea name="description" id="description" cols="80" rows="15"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" value="true" name="is_sell" class="form-check-input" id="is_sell">
+            <label class="form-check-label" for="is_sell">Sell</label>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" value="true" name="is_new" class="form-check-input" id="is_sell">
+            <label class="form-check-label" for="is_new">New</label>
+        </div>
+        <div class="form-group">
+            <select name="id_chef">
+                <option value="1">Văn Trung</option>
+                <option value="2">Thanh Tùng</option>
+                <option value="2">Việt Hoàng</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <select name="id_type">
+                <option value="1">ngọt</option>
+                <option value="2">mặn</option>
+            </select>
+        </div>
+        <button class="btn btn-primary">Add</button>
+
+    </form>
+</div>

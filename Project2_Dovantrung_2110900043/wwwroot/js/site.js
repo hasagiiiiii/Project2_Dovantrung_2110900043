@@ -76,3 +76,27 @@ window.addEventListener("scroll", () => {
         // }
     }
 });
+/*-----------------------------------*\
+  Zoom IMG 
+\*-----------------------------------*/
+
+let zoom = document.querySelector(".imgProduct");
+let ImgZoom = document.querySelector("#imgZoom");
+zoom.addEventListener("mousemove", (e) => {
+    ImgZoom.style.opacity = 1;
+    let positionPixel = e.x - zoom.getBoundingClientRect().left;
+    let positionX = (positionPixel / zoom.offsetWidth) * 100;
+    ImgZoom.style.setProperty("--zoom-x", positionX + "%");
+
+    let positionPixelTop = e.y - zoom.getBoundingClientRect().top;
+    let positionY = (positionPixelTop / zoom.offsetHeight) * 100;
+    ImgZoom.style.setProperty("--zoom-y", positionY + "%");
+
+    let tranformX = -(positionX - 50) / 5;
+    let tranformY = -(positionY - 50) / 5;
+
+    ImgZoom.style.transform = `scale(1.3) translateX(${tranformX}%) translateY(${tranformY}%)`;
+});
+zoom.addEventListener("mouseout", (e) => {
+    ImgZoom.style.opacity = 0;
+});

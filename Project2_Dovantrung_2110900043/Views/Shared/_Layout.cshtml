@@ -10,32 +10,29 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
+
     <div class="preload" data-preload>
-        <div class="circle"></div>
-        <p class="text">Trung Liver</p>
+    <div class="circle"></div>
+    <p class="text">Trung Liver</p>
     </div>
-  
     <header>
         <div id="logo">
             <img src="../image/333.png" alt="" />
         </div>
         <ul class="menu-top">
-            <li><a href="">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="">About Us</a></li>
-            <li><a href="../html/menu.html">Menu</a></li>
+            <li><a href="/Home/Menu">Menu</a></li>
             <li><a href="">Landing</a></li>
             @if(!User.Identity.IsAuthenticated){
                 <li><a href="/Home/Login">Sign in</a></li>
             <li><a href="/Home/Register">Sign up</a></li>
             }else{
                 <ul class="check_user">
-                    <!-- <li><a href="../html/login.html">Sign in</a></li>
-                    <li><a href="">Sign up</a></li> -->
                     <li>
                         <a href="/Home/Profile"><i class="fa-regular fa-user"></i></a>
                     </li>
                     <li>
-                        <!-- <a href=""><p class="fa-solid fa-cart-shopping"></p></a> -->
                         <input type="checkbox" name="" id="cart" />
                         <label for="cart" class="label-cart">
                             <p class="fa-solid fa-cart-shopping"></p>
@@ -49,7 +46,6 @@
         </ul>
         <li class="bar"><i class="fa-solid fa-bars"></i></li>
     </header>
-    <!-- order dashbhoard -->
     <div class="dashboard-order">
         <label for="cart" class="label-cart">
             <p class="fa-solid fa-cart-shopping"></p>
@@ -64,64 +60,109 @@
             30 mins <span class="fas fa-map-marker-alt"></span> 2km
         </div>
         <div class="order-wrapper">
-            <div class="order-card">
-                <img src="../image/trrt.jpg" alt="" class="order-image" />
-                <div class="order-detail">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                    <i class="fas fa-times"></i><input type="text" value="1" />
-                </div>
-                <h6 class="order-price">$35</h6>
-            </div>
-            <div class="order-card">
-                <img src="../image/trrt.jpg" alt="" class="order-image" />
-                <div class="order-detail">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                    <i class="fas fa-times"></i><input type="text" value="1" />
-                </div>
-                <h6 class="order-price">$35</h6>
-            </div>
-            <div class="order-card">
-                <img src="../image/trrt.jpg" alt="" class="order-image" />
-                <div class="order-detail">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                    <i class="fas fa-times"></i><input type="text" value="1" />
-                </div>
-                <h6 class="order-price">$35</h6>
-            </div>
-            <div class="order-card">
-                <img src="../image/trrt.jpg" alt="" class="order-image" />
-                <div class="order-detail">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                    <i class="fas fa-times"></i><input type="text" value="1" />
-                </div>
-                <h6 class="order-price">$35</h6>
-            </div>
+           
+            
         </div>
 
         <hr class="divider" />
         <div class="order-total">
-            <p>Subtotal <span>$156</span></p>
-            <p>Tax(10%) <span>$15.6</span></p>
-            <p>Delivery Free <span>$3</span></p>
-            <div class="order-promo">
-                <input type="text" placeholder="Apply Voucher" class="input-promo" />
-                <button class="button-promo">Find Voucher</button>
-            </div>
-            <hr class="divider" />
-            <p>Total <span>$120.4</span></p>
+          
         </div>
         <button class="checkout">Checkout</button>
     </div>
+
+
             @RenderBody()
      
 
     <footer class="border-top footer text-muted">
        
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/ordermenu.js"></script>
+    <script>
+        $.ajax({
+            url: "/Home/GetCard",
+            type: "get",
+            contentType: "application/json",
+            beforeSend: function () {
+
+            },
+            success: function (res) {
+                let subtotal = 0;
+                if (res && res.length > 0) {
+                    for (var i = 0; i < res.length; i++) {
+                        var view = res[i];
+                        subtotal = view.sum
+                        let show = `
+                         <div class="order-card">
+                        <img src="/${view.img_product}" alt="" class="order-image" />
+                        <div class="order-detail">
+                            <p>${view.detail}</p>
+                            <a href="/Home/DeleteCard?id=${view.id_card}"><i class="fas fa-times"></i></a><input data-id=${view.id_card} type="text" class="input-quantity" value="${view.quantity}" />
+                        </div>
+                        <h6 class="order-price">${view.siglePrice}</h6>
+                        </div>
+                        `;
+                        $('.order-wrapper').append(show);
+                    }
+                    //<p>Subtotal < span > $156 < /span></p >
+                    //    <p>Tax(10 %) < span > $15.6 < /span></p >
+                    //        <p>Delivery Free < span > $3 < /span></p >
+
+                    let abc = `
+                     
+                    <div class="order-promo">
+                        <input type="text" placeholder="Apply Voucher" class="input-promo" />
+                        <button class="button-promo">Find Voucher</button>
+                    </div>
+                    <hr class="divider" />
+                    <p>Total <span class="sumtotal">${subtotal}</span></p>
+                    `
+                    $('.order-total').append(abc);
+
+                }
+            },
+            error: function (err) {
+                console.log()
+            }
+
+        })
+        $(document).ready(function () {
+            $('.input-quantity').change(function () {
+                var id_card = $(this).data('id');
+                var valueinput = $(this).val();
+                console.log(id_card, valueinput);
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/UpdateCard",
+                    data: { id: id_card, quantity: valueinput },
+                    success: function (result) {
+                        //var total = `<p>Total <span class="sumtotal">${result[]}</span></p>`
+                        console.log(result);
+                        if (result > 0) {
+                            console.log(location.reload())
+                            
+                            
+                        }
+                        /*$('.sumtotal').html(result[0].sum);*/
+                    },
+                    error: function (err) {
+                        console.log(err)
+                    }
+                })
+
+            })
+        })
+        
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
+   @* <script  src="~/js/show.js"></script>*@
+
 </body>
 </html>

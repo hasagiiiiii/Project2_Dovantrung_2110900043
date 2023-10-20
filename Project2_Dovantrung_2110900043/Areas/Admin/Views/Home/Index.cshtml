@@ -7,12 +7,13 @@
 
 
 <button id="add" type="button" style="transform:translateX(50px) translateY(50px)" class="btn btn-primary">Thêm người dùng</button>
+<a href="/Admin/Home/AddProduct" id="add" type="button" style="position:absolute; left:230px; top:50px;" class="btn btn-primary">Thêm sản phẩm</a>
+
 <table style="margin:150px auto; border:1px solid black; width:70%;" class="table">
     <thead style="background:black; color:white" class="thead-dark">
         <tr>
             <th scope="col">id_user</th>
             <th scope="col">Username</th>
-            <th scope="col">password</th>
             <th scope="col">Email</th>
             <th scope="col" >Update</th>
             <th scope="col" colspan="2" >Delete</th>
@@ -24,10 +25,9 @@
             <tr>
                 <th scope="row">@items.id_user</th>
                 <td>@items.username</td>
-                <td>@items.passsword</td>
                 <td>@items.email</td>
                 <td><a class="update" href="/Admin/Home/Update?id=@items.id_user">Update</a></td>
-                <td><a class="delete" href="">Delete</a></td>
+                <td><a class="delete" href="/Admin/Home/Delete?id=@items.id_user">Delete</a></td>
             </tr>
         }
        

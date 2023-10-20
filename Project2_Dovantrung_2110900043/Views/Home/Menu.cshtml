@@ -1,5 +1,112 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    Layout = "_Layout";
 }
+@model List<ProductModel>
+<link href="~/css/menu.css" rel="stylesheet" />
+<div class="dashboard">
+    @*<div class="dashboard-banner">
+        <img src="../image/g-min.jpg" alt="" />
+        <div class="banner-promo">
+            <h1>
+                <span>50% OFF</span><br />
+                Tasty Food <br />
+                On Your Hand
+            </h1>
+        </div>
+    </div>*@
+    <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active c-item">
+                <img class="d-block w-100 c-img" src="~/image/g-min.jpg" alt="First slide">
+                <div class="banner-promo">
+                    <h1>
+                        <span>50% OFF</span><br />
+                        Tasty Food <br />
+                        On Your Hand
+                    </h1>
+                </div>
+            </div>
+            <div class="carousel-item c-item">
+                <img class="d-block w-100 c-img" src="~/image/-min1.jpg" alt="Second slide">
+                <div class="banner-promo">
+                    <h1>
+                        <span>50% OFF</span><br />
+                        Tasty Food <br />
+                        On Your Hand
+                    </h1>
+                </div>
+            </div>
+            <div class="carousel-item c-item">
+                <img class="d-block w-100 c-img" src="~/image/nn-min.jpg" alt="Third slide">
+                <div class="banner-promo">
+                    <h1>
+                        <span>50% OFF</span><br />
+                        Tasty Food <br />
+                        On Your Hand
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" data-bs-target="#hero-carousel" type="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </button>
+        <button class="carousel-control-next" data-bs-target="#hero-carousel" type="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </button>
+    </div>
+    <h3 class="dashboard-title">Recommend Bread For You</h3>
+    <div class="dashboard-menu">
+        <a href="#">Favorites</a>
+        <a href="#">Best Seller</a>
+        <a href="#">Near Me</a>
+        <a href="#">Promotion</a>
+        <a href="#">Top Rated</a>
+        <a href="#">All</a>
+    </div>
+    <div class="dashboard-content">
+        @foreach(var pro in Model)
+        {
+            TimeSpan timeDifference = DateTime.Now - pro.time;
+            string timeText = "";
+
+            if (timeDifference.TotalMinutes > 60)
+            {
+                timeText = $"{(int) timeDifference.TotalHours} hours";
+            }
+            else if (timeDifference.TotalMinutes > 0)
+            {
+                timeText = $"{(int)timeDifference.TotalMinutes} mins";
+            }
+            if (!string.IsNullOrEmpty(timeText))
+            {
+                <div class="dashboard-card">
+                    <img src="~/@pro.img_product" alt="" class="card-image" />
+                    <div class="card-detail">
+                        <h4>@pro.name_product <span>@pro.price</span></h4>
+                        <p>@pro.description.</p>
+                        <p class="card-time">
+                            <span class="fas fa-clock"></span>@timeText
+                        </p>
+                        <div class="card-action">
+                            <a class="desc" href="~/Home/Detail?id=@pro.id_product">Read More</a>
+                            <a class="add-card" href="~/Home/AddCard?id=@pro.id_product">
+                                <span class="fa-solid fa-cart-shopping"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+           
+        }
+       
+    </div>
+</div>
+
+

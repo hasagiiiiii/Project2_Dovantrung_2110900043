@@ -1,0 +1,30 @@
+﻿@model ParentModel
+<link href="~/css/detail.css" rel="stylesheet" />
+<div class="content">
+    <!-- IMG product -->
+    <div class="imgProduct">
+        <img src="~/@Model.productModels[0].img_product" id="not_zoom" alt="" />
+        <img src="~/@Model.productModels[0].img_product" alt="" id="imgZoom" />
+    </div>
+    <!-- Content Product -->
+    <div class="content_product">
+        <h1 class="nameProduct">@Model.productModels[0].name_product</h1>
+        <p class="description">
+          @Model.productModels[0].description
+            <br />
+            Calo : 20g
+            <br />
+            Fat: 20g
+            <br />
+            Sugar : 30g
+        </p>
+        <span class="price">@Model.productModels[0].price</span>
+        <p class="time">@Model.productModels[0].time</p>
+        <p>Master Chef: @Model.chefModels[0].name</p>
+        <br />
+        <button>
+            Add to cart
+            <p class="fa-solid fa-cart-shopping"></p>
+        </button>
+    </div>
+</div>
